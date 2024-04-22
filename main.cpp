@@ -95,8 +95,10 @@ int main() {
         }
       }
     }
-    
-    
+
+    //Checks to see if a random block is empty and if it is, then add a 2
+    randomx = rand() % 4;
+    randomy = rand() % 4;
     while (matrix[randomx][randomy] != 0){
       randomx = rand() % 4;
       randomy = rand() % 4;
