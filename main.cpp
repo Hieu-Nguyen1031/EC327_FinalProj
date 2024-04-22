@@ -9,7 +9,7 @@ int main() {
   string direction = "";
   int randomx = 1;
   int randomy = 1;
- 
+
   //Creating a 4*4 matrix for the game
   int matrix[4][4];
 
@@ -23,10 +23,10 @@ int main() {
     }
   }
 
-  matrix[3][3] = 12345;
   //Get a random index of the grid after a user input, then check to see if it is empty to add a 2
 
   while(lose == false){
+    bool full = true;
     cout << "Enter a direction: " << endl;
     cin >> direction;
 
@@ -46,6 +46,7 @@ int main() {
         }
       }
     }
+      
     //moving down
     else if (direction == "s"){
       cout << "You are going down!" << endl;
@@ -62,6 +63,7 @@ int main() {
         }
       }
     }
+      
     //move right
     else if (direction == "d"){
       cout << "You are going right!" << endl;
@@ -104,9 +106,9 @@ int main() {
       randomy = rand() % 4;
     }
     matrix[randomx][randomy] = 2;
-      
 
-//Me just printing it out to see if it works
+
+//Me just printing out the array to see if it works
     for(int i = 0 ; i < 4; i++){
       for(int j = 0; j < 4; j++){
         cout << matrix[i][j] << " ";
@@ -114,6 +116,22 @@ int main() {
       cout << endl;
     }
     cout << endl;
+
+//Checking the array to see if there is an empty spot
+    for(int i = 0; i < 4; i++){
+      for(int j = 0; j < 4; j++){
+        if(matrix[i][j] == 0){
+          full = false;
+        }
+      }
+    }
+
+//If no empty spot, then array is full and you lose
+    if(full == true){
+      lose = true;
+      cout << "You lose!" << endl;
+    }
+    
   }
   return 0;
 }
