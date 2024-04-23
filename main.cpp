@@ -5,10 +5,12 @@ using namespace std;
 #include <string>
 
 int main() {
+  //Initializing variables
   bool lose = false;
   string direction = "";
   int randomx = 1;
   int randomy = 1;
+  int score = 0;
 
   // Creating a 4*4 matrix for the game
   int matrix[4][4];
@@ -27,10 +29,11 @@ int main() {
           "Use the WASD keys to move the tiles. Press Q to quit the game."
        << endl;
 
+  //GAME LOOP STARTS HERE
   // Get a random index of the grid after a user input, then check to see if it
   // is empty to add a 2
 
-  while (lose == false) {
+  while (lose == false){
     bool full = true;
     cout << "Enter a direction or Quit: " << endl;
     cin >> direction;
@@ -50,6 +53,7 @@ int main() {
             matrix[i][j] = 0;
           } else if (matrix[i - 1][j] == matrix[i][j]) {
             matrix[i - 1][j] = matrix[i][j] * 2;
+            score += matrix[i][j]*2;
             matrix[i][j] = 0;
           }
         }
@@ -66,6 +70,7 @@ int main() {
             matrix[i][j] = 0;
           } else if (matrix[i + 1][j] == matrix[i][j]) {
             matrix[i + 1][j] = matrix[i][j] * 2;
+            score += matrix[i][j]*2;
             matrix[i][j] = 0;
           }
         }
@@ -82,6 +87,7 @@ int main() {
             matrix[i][j] = 0;
           } else if (matrix[i][j + 1] == matrix[i][j]) {
             matrix[i][j + 1] = matrix[i][j] * 2;
+            score += matrix[i][j]*2;
             matrix[i][j] = 0;
           }
         }
@@ -98,13 +104,16 @@ int main() {
             matrix[i][j] = 0;
           } else if (matrix[i][j - 1] == matrix[i][j]) {
             matrix[i][j - 1] = matrix[i][j] * 2;
+            score += matrix[i][j]*2;
             matrix[i][j] = 0;
           }
         }
       }
     }
 
+    // Generate a random x and y coordinate
     // Checks to see if a random block is empty and if it is, then add a 2
+    // Otherwise find a different index until it gets an empty one
     randomx = rand() % 4;
     randomy = rand() % 4;
     while (matrix[randomx][randomy] != 0) {
@@ -145,6 +154,7 @@ int main() {
       lose = true;
       cout << "You lose!" << endl;
     }
+    cout << "Score: " << score << endl;
   }
   return 0;
 }
