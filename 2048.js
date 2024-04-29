@@ -56,16 +56,16 @@ function updateBlock(block, num) {
 document.addEventListener("keyup", (input) => {
   if (input.code == "ArrowLeft") {
     slideLeft();
-    genblock();
+    setTwo();
   } else if (input.code == "ArrowRight") {
     slideRight();
-    genblock();
+    setTwo();
   } else if (input.code == "ArrowUp") {
     slideUp();
-    genblock();
+    setTwo();
   } else if (input.code == "ArrowDown") {
     slideDown();
-    genblock();
+    setTwo();
   }
   //updating the score value on browser
   document.getElementById("score").innerText = score;
